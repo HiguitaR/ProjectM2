@@ -1,7 +1,7 @@
 package com.devseniorc4.HiguitaR.model;
 
 import java.time.LocalDateTime;
-import java.time.LocalTime;
+
 
 public class HistoryAction {
 
@@ -28,7 +28,7 @@ public class HistoryAction {
         return this.actTime;
     }
 
-    public void setActTime(LocalTime actTime) {
+    public void setActTime() {
         this.actTime = LocalDateTime.now();
     }
 

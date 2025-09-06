@@ -20,7 +20,12 @@ public class User {
         this.password = password;
         this.rol = rol;
         this.action = new ArrayList<>();
+    }
 
+    public User(){
+        this.nickName = "admin";
+        this.password = "admin";
+        this.rol = Role.ADMIN;
     }
 
     public String getFullName() {
@@ -63,9 +68,6 @@ public class User {
         this.password = newPassword;
     }
 
-    public void setAction(HistoryAction action) {
-        this.action.add(action);
-    }
 
     @Override
     public String toString() {

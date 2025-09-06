@@ -2,7 +2,6 @@ package com.devseniorc4.HiguitaR.service;
 
 import com.devseniorc4.HiguitaR.model.User;
 import com.devseniorc4.HiguitaR.model.Role;
-import com.devseniorc4.HiguitaR.model.HistoryAction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,11 +9,29 @@ import java.util.List;
 public class UserService {
 
     private List<User> userList = new ArrayList<>();
+    private User currentUser;
+
+    public void loginUser(String nickName, String password){
+        for (User user : userList){
+            if (user.getNickName().equals(nickName) && user.getPassword().equals(password)
+                    && isAdmin()){
+                this.currentUser = user;
+                System.out.println("Login successful! ✅, welcome " + user.getFullName());
+                user.setAction("User logged in!");
+                return;
+            }
+        }
+        System.out.println("User nickname or password invalid ❌");
+    }
+
+    public Boolean isAdmin(){
+        return currentUser != null && currentUser.getRol() == Role.ADMIN;
+    }
+
     public void createUser (String fullName, int id,  String nickName,
                             String password,
-                            Role rol,
-                            HistoryAction action) {
-        if (!adminValid){
+                            Role rol) {
+        if (!isAdmin()){
             System.out.println("Admin-only access ❌");
             return;
         }
@@ -24,7 +41,7 @@ public class UserService {
     }
 
     public void findUser (int id){
-        if (!adminValid){
+        if (!isAdmin()){
             System.out.println("Admin-only access ❌");
             return;
         }
@@ -33,6 +50,5 @@ public class UserService {
                 System.out.println(user);
             }
         }
-
     }
 }
