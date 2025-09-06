@@ -1,5 +1,51 @@
 package com.devseniorc4.HiguitaR.model;
 
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+
 public class HistoryAction {
-    //TODO: "Add attribute, constructor and getters\setters"
+
+    private String actDescription;
+    private LocalDateTime actTime;
+    private User user;
+
+    public HistoryAction(String actDescription, User user) {
+        this.actDescription = actDescription;
+        this.actTime = LocalDateTime.now();
+        this.user = user;
+
+    }
+
+    public String getActDescription() {
+        return actDescription;
+    }
+
+    public void setActDescription(String actDescription) {
+        this.actDescription = actDescription;
+    }
+
+    public LocalDateTime getActTime() {
+        return this.actTime;
+    }
+
+    public void setActTime(LocalTime actTime) {
+        this.actTime = LocalDateTime.now();
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return "HistoryAction{" +
+                "actDescription='" + actDescription + '\'' +
+                ", actTime=" + actTime +
+                ", user=" + user +
+                '}';
+    }
 }
