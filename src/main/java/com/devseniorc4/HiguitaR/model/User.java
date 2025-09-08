@@ -26,6 +26,11 @@ public class User {
         this.nickName = "admin";
         this.password = "admin";
         this.rol = Role.ADMIN;
+        this.action = new ArrayList<>();
+    }
+
+    public void addAction(String description){
+        this.action.add(new HistoryAction(description, this));
     }
 
     public String getFullName() {

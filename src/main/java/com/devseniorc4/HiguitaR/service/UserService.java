@@ -11,13 +11,17 @@ public class UserService {
     private List<User> userList = new ArrayList<>();
     private User currentUser;
 
+    public void UserService(){
+        userList.add(new User());
+    }
+
     public void loginUser(String nickName, String password){
         for (User user : userList){
             if (user.getNickName().equals(nickName) && user.getPassword().equals(password)
                     && isAdmin()){
                 this.currentUser = user;
                 System.out.println("Login successful! ✅, welcome " + user.getFullName());
-                user.setAction("User logged in!");
+                user.addAction("User logged in!");
                 return;
             }
         }
@@ -35,9 +39,10 @@ public class UserService {
             System.out.println("Admin-only access ❌");
             return;
         }
-        User user = new User(fullName, id,nickName, password, rol);
-        userList.add(user);
+        User newUser = new User(fullName, id,nickName, password, rol);
+        userList.add(newUser);
         System.out.println("User created successful ✅");
+        currentUser.addAction("Create a new user!" + newUser.getFullName());
     }
 
     public void findUser (int id){
@@ -47,8 +52,12 @@ public class UserService {
         }
         for (User user : userList){
             if (user.getId() == id){
+                System.out.println("User found! ✅");
                 System.out.println(user);
+                currentUser.addAction("Searched for user with ID" + id);
+                return;
             }
         }
+        System.out.println("User can't find! ❌");
     }
 }
