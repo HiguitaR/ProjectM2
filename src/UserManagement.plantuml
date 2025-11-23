@@ -1,0 +1,19 @@
+@startuml
+Class User{
+- fullName: String
+- id: Integer
+- userName: String
+- password: String
+- actions: List<HistoryActions>
+}
+Class HistoryActions{
+- description: String
+- date: LocalDateTime
+}
+Enum Role{
+ADMIN
+USER
+}
+User -> Role: access type
+User "1" *-- "*" HistoryActions: actions
+@enduml
