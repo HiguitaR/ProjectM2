@@ -51,6 +51,7 @@ public class Menu {
         System.out.println("3. Update a user password");
         System.out.println("4. Delete a user");
         System.out.println("5. Show History actions");
+        System.out.println("6. Back Menu");
         System.out.println("0. Exit");
     }
 
@@ -59,6 +60,7 @@ public class Menu {
         System.out.println("1. Update my name");
         System.out.println("2. Update my password");
         System.out.println("3. Show my history actions");
+        System.out.println("4. Back Menu");
         System.out.println("0. Exit");
     }
 
@@ -147,8 +149,11 @@ public class Menu {
                     case "5":
                         service.showHistory(currentUser);
                         break;
-                    case "0":
+                    case "6":
                         validateUser();
+                        break;
+                    case "0":
+                        System.out.println("Logging out...");
                         break;
                     default:
                         System.out.println("Invalid option!");
@@ -197,11 +202,12 @@ public class Menu {
                         service.showHistory(currentUser);
                         break;
 
-                    case "0":
-                        System.out.println("Logging out...");
+                    case "4":
                         validateUser();
                         break;
-
+                    case "0":
+                        System.out.println("Logging out...");
+                        break;
                     default:
                         System.out.println("Invalid option!");
                         break;
